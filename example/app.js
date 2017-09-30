@@ -2,70 +2,67 @@
  * Require and configure Alias with initial options
  */
 
-var Alias = require('../src/require-alias');
+var Alias = require('../').Alias
 
 var exampleAlias = new Alias({
-
-    root: './app/',
-
-    aliases: {
-        '@models': 'models',
-        '@random': 'random',
-        '@another': 'another/path',
-        '@and': 'another/path'
-    }
-
-});
+  root: './example/app/',
+  aliases: {
+    '@models': 'models',
+    '@random': 'random',
+    '@another': 'another/path',
+    '@and': 'another/path'
+  }
+})
 
 /**
  * Add some more aliases
  */
 
-exampleAlias.add({
-    '@handlers': 'handlers',
-    '@bar': 'models/bar'
-});
+exampleAlias.set({
+  '@handlers': 'handlers',
+  '@bar': 'models/bar'
+})
 
 /**
  * Add single alias
  */
 
-exampleAlias.add('@bar', 'models/bar');
+exampleAlias.add('@bar', 'models/bar')
 
 /**
  * Delete single alias
  */
 
-exampleAlias.delete('@random');
+// exampleAlias.delete('@random')
 
 /**
  * Delete multiple aliases
  */
 
-exampleAlias.delete(['@another', '@and']);
+// exampleAlias.delete(['@another', '@and'])
 
 /**
  * Get path to foo using alias + path
  */
 
-var pathToFoo = exampleAlias.path('@handlers/for/foo');
-var foo = require(pathToFoo);
-console.log(foo()); // Output: Foo
+var pathToFoo = exampleAlias.path('@handlers/for/foo')
+var foo = require(pathToFoo)
+console.log(foo()) // Output: Foo
 
 /**
  * Get path to bar with using only alias
  */
 
-var pathToBar = exampleAlias.path('@bar');
-var bar = require(pathToBar);
-console.log(bar()); // Output: Bar
+var pathToBar = exampleAlias.path('@bar')
+var bar = require(pathToBar)
+console.log(bar()) // Output: Bar
 
 /**
  * Require module using alias
  */
 
-var moduleFoo = exampleAlias.require('@handlers/for/foo');
-console.log(moduleFoo()); // Output: Foo
+var moduleFoo = exampleAlias.require('@handlers/for/foo')
+console.log(moduleFoo()) // Output: Foo
 
 /**
  * This is the basic usage.
@@ -78,18 +75,18 @@ console.log(moduleFoo()); // Output: Foo
  * You may assign alias to global variable and use it instead of require:
  */
 
-global.alias = exampleAlias;
+// global.alias = exampleAlias
 
-/**
- * Just an example
- */
+// /**
+//  * Just an example
+//  */
 
-alias.add('@baz', 'baz');
-var baz = alias.require('@baz');
-console.log(baz()); // Output: Baz
+// alias.add('@baz', 'baz')
+// var baz = alias.require('@baz')
+// console.log(baz()) // Output: Baz
 
-var pathToBaz = alias.path('@baz');
-console.log(pathToBaz); // Output: C:\require-alias\example\app\baz (Or wherever
+// var pathToBaz = alias.path('@baz')
+// console.log(pathToBaz) // Output: C:\require-alias\example\app\baz (Or wherever
                         // your project is located
 
 /**
