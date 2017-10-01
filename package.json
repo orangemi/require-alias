@@ -1,47 +1,31 @@
 {
-    "name": "require-alias",
-    "version": "1.0.5",
-    "repository": "https://github.com/manuelvulp/require-alias",
-    "homepage": "https://github.com/manuelvulp/require-alias",
-    "description": "Path manager for Node.js",
-    "main": "index",
-    "keywords": ["node", "require", "path", "paths", "manager", "relative", "from", "project root", "absolute", "absolute path", "absolutepath", "root", "rootpath", "root path"],
-    "directories": {
-        "example": "example"
-    },
-    "author": "Manuel Vulp",
-    "license": "MIT",
-    "devDependencies": {
-        "blanket": "^1.1.6",
-        "coveralls": "^2.10.0",
-        "grunt": "^0.4.5",
-        "grunt-contrib-clean": "^0.5.0",
-        "grunt-contrib-copy": "^0.5.0",
-        "grunt-env": "^0.4.1",
-        "grunt-mocha-istanbul": "^1.4.1",
-        "grunt-mocha-test": "^0.11.0",
-        "grunt-shell": "^0.7.0",
-        "mocha": "~1.19.0",
-        "mocha-lcov-reporter": "0.0.1",
-        "must": "~0.11.0",
-        "require-dir": "^0.1.0",
-        "sinon": "~1.10.0"
-    },
-    "scripts": {
-        "test": "mocha  --require must --recursive -c --reporter spec",
-        "testw": "mocha  --require must --recursive -c --reporter spec -w",
-        "coverage": "mocha --require blanket --require must --reporter html-cov test/**/*.js > coverage.html",
-        "coveralls": "mocha --require blanket --require must --reporter mocha-lcov-reporter test/**/*.js | coveralls"
-    },
-    "config": {
-        "blanket": {
-            "pattern": [
-                "src/"
-            ],
-            "data-cover-never": [
-                "node_modules",
-                "test"
-            ]
-        }
-    }
+  "name": "require-alias",
+  "version": "1.0.5",
+  "repository": "https://github.com/orangemi/require-alias",
+  "homepage": "https://github.com/orangemi/require-alias",
+  "description": "Path manager for Node.js",
+  "main": "lib/index.js",
+  "keywords": [
+    "node",
+    "require",
+    "path",
+    "relative",
+    "root"
+  ],
+  "directories": {
+    "example": "example"
+  },
+  "author": "Orange Mi <orangemiwj@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "mocha": "~1.19.0",
+    "must": "~0.11.0",
+    "nyc": "^11.2.1",
+    "standard": "^10.0.3"
+  },
+  "scripts": {
+    "test": "mocha --reporter spec",
+    "coverage": "nyc npm test",
+    "coverage-report": "nyc report --reporter=text-lcov | coveralls"
+  }
 }
