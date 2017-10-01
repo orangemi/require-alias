@@ -25,6 +25,7 @@
   },
   "scripts": {
     "test": "mocha --reporter spec",
-    "coverage": "nyc npm test"
+    "coverage": "nyc npm test",
+    "coverage-report": "nyc report --reporter=text-lcov | coveralls"
   }
 }

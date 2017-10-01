@@ -1,7 +1,7 @@
 
  Require Alias
 ======
-[![Coverage Status](https://img.shields.io/coveralls/orangemi/require-alias.svg)](https://coveralls.io/r/orangemi/require-alias)
+[![Coverage Status](https://coveralls.io/repos/github/orangemi/require-alias/badge.svg?branch=master)](https://coveralls.io/github/orangemi/require-alias?branch=master)
 
 Library that might help you deal with Node paths 
 
